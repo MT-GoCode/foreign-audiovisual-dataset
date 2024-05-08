@@ -1,0 +1,14 @@
+opencv-python
+numpy
+pillow
+torch
+torchvision
+tqdm
+scikit-learn
+pandas
+mtcnn
+deepface
+hdbscan
+matplotlib
+imutils
+umap-learn
