@@ -1,5 +1,8 @@
 infrastructure: "local"
 
+S3_SETUP:
+
+
 Collection_Pipeline:
 
     # turn off different parts of pipeline by setting enabled: False

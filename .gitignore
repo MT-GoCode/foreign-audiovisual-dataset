@@ -3,3 +3,5 @@ DATA/raw_videos/*
 DATA/video_clips/*
 !DATA/raw_videos/.gitkeep
 !DATA/video_clips/.gitkeep
+!DATA/raw_videos/filler
+!DATA/raw_videos/filler
