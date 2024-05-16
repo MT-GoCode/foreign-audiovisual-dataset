@@ -7,7 +7,7 @@ Collection_Pipeline:
 
     # turn off different parts of pipeline by setting enabled: False
     download:
-        enabled: False
+        enabled: True
         query_csv: CSV/video_queries.csv # contains queries to use
         raw_folder: DATA/raw_videos/ # MAKE SURE THERE IS / at the end. If this is relative path, do not include / at the beginning. where videos will be stored after download
         video_csv: CSV/raw_videos.csv # where downloaded videos will be recorded
@@ -15,8 +15,10 @@ Collection_Pipeline:
         limit_query: 2 # how may queries you'd like to process, then stop
         limit_videos: 50 # a hard limit of how many videos to download in one running
 
-    clip:
-        enabled: True
+        exclude_english: True
+
+    filter:
+        enabled: False
         download_clips: True
         clip_folder: DATA/video_clips/
         # This is where the 
@@ -35,24 +37,31 @@ Collection_Pipeline:
         # attribution - analyse a clip for gender, ethnicity, facial hair
         # pose estimation - frame-by-frame pose estimation
         # Depending on what is set to true, the code will run just that part of analysis.
+        enabled: False
 
         limit_videos: 50 # how many clips to analyze at a time
 
-        crop: True
-        download_crops: True # crops will be downloaded to the same folder as clip_folder
-        download_replace: True 
-            # True: crop videos destructively 
-            # False: save a copy called "<clip>_cropped.mp4"
-        
-        attribute: True
-        attribute_csv: STATISTICS/attribute.csv
-            # where to save statistics of each video.
-            # See "attribute.csv format" for expected format of this filepath.
+        feature_csv: STATISTICS/features.csv
+        # where to save attribute and "area of interest/crop" features.
+        # See "feature.csv format" for expected format of this csv.
 
-        pose_estimation: True
+        crop: True
+        download_crops: False # crops will be downloaded to the same folder as clip_folder, titled <clip>_cropped.mp4"
+        
+        attribute: True # whether to run the attribution model
+
+        pose_estimation: True # whether to run pose estimation on every frame.
         pose_folder: STATISTICS/pose/
             # where to dump pose data - each clip will produce a file "<clip name>_pose.csv"
-   
+
+    post_processing:
+        enabled: True
+
+        language_annotation: False # annotate raw_videos csv with language where missing using SpeechBrain
+
+        plot: True # whether to generate some plots for attribution data. If you just want to plot, turn all the other parts of the pipeline to False
+        plot_folder: STATISTICS/plots/ # where to put image plots
+
     encord_upload: 
         enabled: True
         source_folder: CSV/video_clips.csv

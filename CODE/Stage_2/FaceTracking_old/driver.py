@@ -1,9 +1,9 @@
 import pandas as pd
 import json
 import os
-from .tracking import VideoProcessor
+from tracking import VideoProcessor
 from moviepy.editor import VideoFileClip
-from .PoseEstimation import *
+from PoseEstimation import *
 
 class ClipProcessor:
 
@@ -38,6 +38,9 @@ class ClipProcessor:
             video_path = video_path,
             clip_start = clip_start,
             clip_end = clip_end)
+        
+        print("OLD FACETRACKING RESULTS: ")
+        print(result)
         
         _ = ClipProcessor.find_furthest_points(results['grouped_bbox'])
         box_for_crop = next(iter(_.values()))
@@ -89,7 +92,7 @@ class ClipProcessor:
 #             clip_start = 0.16683333333333333,
 #             clip_end = 12.178833333333332)
 
-
+ClipProcessor.process(video_path = r"C:\Users\tminh\Downloads\DatasetGenerator\DATA\video_clips\Fmrcd8ebQMmjjWJ.mp4", clip_start = 0, clip_end = 10)
 
 
 # print(ClipProcessor.pose_estimate(r"C:\Users\tminh\Downloads\DatasetGenerator\DATA\video_clips\test_cropped.mp4"))

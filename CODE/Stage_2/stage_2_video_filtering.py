@@ -6,7 +6,7 @@ import string
 from .audio_functions import *
 from .helper_objects import *
 from .video_ML_functions import *
-from .FaceTracking.driver import *
+# from .FaceTracking.driver import *
 
 class LocalFilter:
     def __init__(self, **kwargs):
@@ -166,18 +166,5 @@ class LocalFilter:
         # self.clip_csv is the PATH
         self.clip_csv_pd.to_csv(self.clip_csv, index=False)
 
-
-# PORT LATER
-# # this function will perform the cropping + saving
-                # results = ClipProcessor.process(video_path = video_path, clip_start = start_time, clip_end = end_time)
-
-                # crop_box = ClipProcessor.find_furthest_points(results['grouped_bbox'])
-
-                # ClipProcessor.crop_and_trim_video(video_path = video_path,
-                #                                 output_name = output_filename,
-                #                                 bbox = crop_box,
-                #                                 clip_start = start_time,
-                #                                 clip_end = end_time                      
-                #                                 )
 
 

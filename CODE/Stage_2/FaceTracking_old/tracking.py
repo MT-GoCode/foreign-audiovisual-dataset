@@ -1,8 +1,8 @@
-from .video_processor import process_video
-from .clustering_algos import *
-from .grouping import group_bbox, group_probabilities, process_predictions
+from video_processor import process_video
+from clustering_algos import *
+from grouping import group_bbox, group_probabilities, process_predictions
 import cv2
-from .load_model import Predictor
+from load_model import Predictor
 import numpy as np
 
 
@@ -18,9 +18,9 @@ class VideoProcessor:
                      'Young', 'Facial_Hair']
 
 
-              self.attr_model = Predictor('CODE/Stage_2/FaceTracking/models/epoch_9_loss_14.826.pth', len(self.face_attributes), device='cuda')
+              # self.attr_model = Predictor('CODE/Stage_2/FaceTracking/models/epoch_9_loss_14.826.pth', len(self.face_attributes), device='cuda')
 
-              # self.attr_model = Predictor('FaceTracking/models/epoch_9_loss_14.826.pth', len(self.face_attributes), device='cuda')
+              self.attr_model = Predictor('models/epoch_9_loss_14.826.pth', len(self.face_attributes), device='cuda')
 
 
        def proccess_video(self, video_path):

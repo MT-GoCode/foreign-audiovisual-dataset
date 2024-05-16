@@ -30,13 +30,15 @@ bucket_name = args.bucket_name
 folder_map_local_to_s3 = {
     "DATA/video_clips/" : "S3_DATASET/DATA/video_clips",
     "DATA/raw_videos/" : "S3_DATASET/DATA/raw_videos",
-    "STATISTICS/" : "S3_DATASET/STATISTICS",
+    "STATISTICS/plots" : "S3_DATASET/STATISTICS/plots",
+    "STATISTICS/pose" : "S3_DATASET/STATISTICS/pose",
 }
 
 csv_map_local_to_s3 = {
     "CSV/raw_videos.csv": "S3_DATASET/CSV/raw_videos.csv",
     "CSV/video_queries.csv": "S3_DATASET/CSV/video_queries.csv",
     "CSV/video_clips.csv": "S3_DATASET/CSV/video_clips.csv",
+    "STATISTICS/features.csv":"S3_DATASET/STATISTICS/features.csv",
 }
 
 # FUNCTIONS

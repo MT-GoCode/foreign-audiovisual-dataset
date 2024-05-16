@@ -3,6 +3,8 @@ import yaml
 
 from CODE.Stage_1.stage_1_download import *
 from CODE.Stage_2.stage_2_video_filtering import *
+from CODE.Stage_3.stage_3_analysis import *
+from CODE.Post.post_processing import *
 
 
 def load_configuration(file_path):
@@ -28,7 +30,7 @@ def main(config_path):
             
             Stage_1.execute()
 
-        if pipeline['filtering']['enabled']:
+        if pipeline['filter']['enabled']:
 
             
             Stage_2 = LocalFilter(
@@ -36,15 +38,55 @@ def main(config_path):
                             raw_folder = pipeline['download']['raw_folder'],
                             video_csv = pipeline['download']['video_csv'],
 
-                            clip_folder = pipeline['filtering']['clip_folder'],
-                            clip_csv = pipeline['filtering']['clip_csv'],
-                            min_face_size = int(pipeline['filtering']['min_face_size']),
-                            skip_crop = bool(pipeline['filtering']["skip_crop"]),
-                            min_length = float(pipeline['filtering']["min_length"]),
-                            limit_videos = int(pipeline['filtering']['limit_videos']),
-                            voice_detection_smoothing = float(pipeline['filtering']['limit_videos']))
+                            clip_folder = pipeline['filter']['clip_folder'],
+                            clip_csv = pipeline['filter']['clip_csv'],
+                            min_face_size = int(pipeline['filter']['min_face_size']),
+                            skip_crop = bool(pipeline['filter']["skip_crop"]),
+                            min_length = float(pipeline['filter']["min_length"]),
+                            limit_videos = int(pipeline['filter']['limit_videos']),
+                            voice_detection_smoothing = float(pipeline['filter']['limit_videos']))
             print ("obj creation")
             Stage_2.execute()
+
+        if pipeline['analysis']['enabled']:
+            
+            if bool(pipeline['analysis']['attribute']):
+
+                Stage_3 = LocalAnalyzer(
+                    clip_folder = pipeline['filter']['clip_folder'],
+                    clip_csv = pipeline['filter']['clip_csv'],
+
+
+                    limit_videos = pipeline['analysis']['limit_videos'],
+                    feature_csv = pipeline['analysis']['feature_csv'],
+
+                    crop = pipeline['analysis']['crop'],
+                    download_crops = pipeline['analysis']['download_crops'],
+                    
+                    attribute = pipeline['analysis']['attribute'],
+
+                    pose_estimation = pipeline['analysis']['pose_estimation'],
+                    
+                    pose_folder = pipeline['analysis']['pose_folder'],
+                )
+
+                Stage_3.execute()
+
+        if pipeline['post_processing']['enabled']:
+
+            if pipeline['post_processing']['plot']:
+                P = Plotter(feature_csv = pipeline['analysis']['feature_csv'],
+                            plot_folder = pipeline['post_processing']['plot_folder'])
+                
+                P.execute()
+
+            # Stage_3 = LocalCropper(
+            #     crop = 
+            #     download_crops = bool(pipeline['analysis']['crop'])
+                
+            #     limit_videos = int(pipeline['analysis']['limit_videos'])
+
+            # )
     
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()

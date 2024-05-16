@@ -35,7 +35,7 @@ class Predictor:
         resnet50_model.fc = nn.Linear(num_ftrs, attribute_count)
 
         # Load the pre-trained weights from the specified path
-        resnet50_model.load_state_dict(torch.load(model_path, map_location=self.device))
+        resnet50_model.load_state_dict(torch.load(model_path, map_location=torch.device('cpu')))# self.device))
 
         # Move the model to the specified device and set to evaluation mode
         resnet50_model = resnet50_model.to(device)
