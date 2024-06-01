@@ -11,9 +11,9 @@ Collection_Pipeline:
         query_csv: CSV/video_queries.csv # contains queries to use
         raw_folder: DATA/raw_videos/ # MAKE SURE THERE IS / at the end. If this is relative path, do not include / at the beginning. where videos will be stored after download
         video_csv: CSV/raw_videos.csv # where downloaded videos will be recorded
-        results_per_query: 5
+        results_per_query: 10
         limit_query: 1000 # how may queries you'd like to process, then stop
-        limit_videos: 1000 # a hard limit of how many videos to download in one running
+        limit_videos: 500 # a hard limit of how many videos to download in one running
 
         exclude_english: True
 
@@ -28,7 +28,7 @@ Collection_Pipeline:
         min_face_size: 100 # minimum size in pixels for a face to be included
         skip_crop: False # crop the video or not
         min_length: 5 # minimum length of a segment, in seconds
-        limit_videos: 1000 # limit how many videos we'd like to filter and clip for now
+        limit_videos: 500 # limit how many videos we'd like to filter and clip for now
         voice_detection_smoothing: 0.5 # in seconds, the pause which would cause two different speech segments to be considered the same.
 
     analysis:
@@ -39,7 +39,7 @@ Collection_Pipeline:
         # Depending on what is set to true, the code will run just that part of analysis.
         enabled: False
 
-        limit_videos: 1000 # how many clips to analyze at a time
+        limit_videos: 1 # how many clips to analyze at a time
 
         feature_csv: STATISTICS/features.csv
         # where to save attribute and "area of interest/crop" features.
@@ -55,7 +55,7 @@ Collection_Pipeline:
             # where to dump pose data - each clip will produce a file "<clip name>_pose.csv"
 
     post_processing:
-        enabled: True
+        enabled: False
 
         language_annotation: False # annotate raw_videos csv with language where missing using SpeechBrain
 

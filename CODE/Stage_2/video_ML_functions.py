@@ -22,7 +22,7 @@ def detect_faces_retinaface(np_image: np.ndarray, plot: bool = False):
     :return: List of bounding boxes for each detected face, each box is a tuple (x, y, width, height).
     """
     # Initialize the RetinaFace detector
-    app = FaceAnalysis()
+    app = FaceAnalysis(providers=['CUDAExecutionProvider'], allowed_modules=['detection', 'recognition'])
     app.prepare(ctx_id=0, det_size=(640, 640))
 
     # Detect faces
@@ -193,32 +193,38 @@ def analyze_speaking(test, start_frame, end_frame, upper_lip_idx, lower_lip_idx,
     num_batches = len(total_frames) // batch_size + (1 if len(total_frames) % batch_size != 0 else 0)
 
     for batch in range(num_batches):
-        if batch >= 10: break;
+        try:
+        
+            if batch >= 10: break;
 
-        mouth_openings = []
-        start = batch * batch_size
-        end = min((batch + 1) * batch_size, len(total_frames))
-        batch_frames = total_frames[start:end]
+            mouth_openings = []
+            start = batch * batch_size
+            end = min((batch + 1) * batch_size, len(total_frames))
+            batch_frames = total_frames[start:end]
 
-        with tqdm(total=len(batch_frames), desc=f"Batch {batch+1}/{num_batches}") as pbar:
-            for frame_number in batch_frames:
-                np_image = test.get_frame(frame_number)
-                if np_image is not None:
-                    landmarks = detect_facial_landmarks(np_image)
-                    if landmarks:
-                        mouth_opening = calculate_mouth_opening(landmarks, upper_lip_idx, lower_lip_idx)
-                        mouth_openings.append(mouth_opening)
-                # Update the progress bar by one step
-                pbar.update(1)
+            with tqdm(total=len(batch_frames), desc=f"Batch {batch+1}/{num_batches}") as pbar:
+                for frame_number in batch_frames:
+                    np_image = test.get_frame(frame_number)
+                    if np_image is not None:
+                        landmarks = detect_facial_landmarks(np_image)
+                        if landmarks:
+                            mouth_opening = calculate_mouth_opening(landmarks, upper_lip_idx, lower_lip_idx)
+                            mouth_openings.append(mouth_opening)
+                    # Update the progress bar by one step
+                    pbar.update(1)
 
-        # Explicitly delete variables that are no longer needed and clear the list to free up memory
-        del np_image, landmarks
+            # Explicitly delete variables that are no longer needed and clear the list to free up memory
+            del np_image, landmarks
 
-        # Call the garbage collector manually to force cleanup
-        gc.collect()
+            # Call the garbage collector manually to force cleanup
+            gc.collect()
 
-        if detect_speaking(mouth_openings):
-            return True;
+            if detect_speaking(mouth_openings):
+                return True;
+
+        except Exception(e):
+            print(e)
+            continue;
 
     return False
 

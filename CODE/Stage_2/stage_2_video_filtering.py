@@ -16,7 +16,10 @@ class LocalFilter:
         self.clip_csv_pd = pd.read_csv(self.clip_csv)
 
     def fetch_remaining_videos(self):
-        X = self.video_csv_pd[self.video_csv_pd['PROCESSED?'] != 1]['VIDEO ID'].tolist()
+        X = self.video_csv_pd[(self.video_csv_pd['PROCESSED?'] != 1) & 
+                  (self.video_csv_pd['Language'] != 'en') & 
+                  (self.video_csv_pd['Duration'] < 1200) & 
+                  (self.video_csv_pd['Resolution'].str.len() >= 9)]['VIDEO ID'].tolist()
         return X[:min(len(X), self.limit_videos)]
     
     def execute(self):
@@ -45,6 +48,9 @@ class LocalFilter:
                 
                 print("DETECTED TO HAVE ONE FACE: ")
                 print(functional_shots)
+
+                if len(functional_shots) == 0: continue
+
                 wav = Audio_Custom.extract_audio(video_path)
 
 
@@ -54,6 +60,8 @@ class LocalFilter:
                 # APPLY VAD SMOOTHING
                 smoothed_segments = smooth_voice_segments(timestamps, self.voice_detection_smoothing)
                 print(smoothed_segments)
+
+                if len(smoothed_segments) == 0: continue
 
                 video = VideoFileClip(video_path)
 
@@ -76,6 +84,7 @@ class LocalFilter:
                     except Exception as e:
                         print("SYSTEM: error while analyzing mouth movements.")
                         print(e)
+                        continue;
                 print("DETECTED TO HAVE SOMEONE SPEAKING")
                 print(good_speaking_shots)
 
@@ -150,6 +159,7 @@ class LocalFilter:
             except Exception as e:
                 print("SYSTEM: something went wrong for video " + VIDEO_ID)
                 print(e)
+                continue;
 
     def mark_video_processed(self, VIDEO_ID):
         self.video_csv_pd.loc[self.video_csv_pd['VIDEO ID'] == VIDEO_ID, 'PROCESSED?'] = 1

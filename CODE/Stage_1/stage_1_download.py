@@ -9,8 +9,8 @@ class YoutubeFunctions:
         video_search = VideosSearch(query, limit=results_limit)
         results = video_search.result()
 
-        print("YOUTUBE SEARCH RESPONSE: ")
-        print(video_search)
+        # print("YOUTUBE SEARCH RESPONSE: ")
+        # print(video_search)
         return [x['id'] for x in results['result'] ]
 
         # returns a bunch of ID's
@@ -26,7 +26,7 @@ class YoutubeFunctions:
             # Fetch video information
             info_dict = ydl.extract_info(url, download=False)
             # Since '--print-json' is not directly available, we work with the info_dict returned
-            print(info_dict)
+            # print(info_dict)
             return info_dict
 
 
@@ -77,9 +77,9 @@ class LocalDownloader:
             cnt_vids += len(to_add)
 
             if cnt_vids >= limit_videos:
-                to_add = to_add[:len(to_add) - (cnt_vids - limit_videos)]
-                ID_list += [query, to_add]
-                break;
+                to_add = list(to_add)[:len(to_add) - (cnt_vids - limit_videos)]
+                ID_list.append( [query, to_add])
+                break
 
             ID_list.append([query, to_add])
 
@@ -96,6 +96,20 @@ class LocalDownloader:
             for id in ids:
                 url = "https://www.youtube.com/watch?v=" + id
 
+                try:
+                    info = YoutubeFunctions.get_video_info(url)
+
+                    # NOT (good resolution and not english)
+                    if not (info.get('width', 0) >= 720 and info.get('height', 0) >= 720 and info.get('language', 'N/A') != 'en' and info.get('duration', 0) < 3600):
+                        continue;
+                except Exception as e:
+                    print("SYSTEM: error fetching data for initial video check: " + id)
+                    print(e)
+                    continue
+
+                print("VIDEO PASSES.")
+                # print(info)
+                print("DURATION: " + str(info.get('duration', '0')))
                 try:
                     YoutubeFunctions.download_video(url, id, self.raw_folder)
                     print("SYSTEM: successful download of " + id)
@@ -134,3 +148,4 @@ class LocalDownloader:
             print("Could not get video url: ", e)
             return pd.Series(['N/A', 'N/A', url, 'N/A', 'N/A', 'N/A'], index=['VIDEO ID', 'Name', 'Video Link', 'Resolution', 'Duration', 'Language'])
         
+# print(YoutubeFunctions.get_video_info("https://www.youtube.com/watch?v=muh361B8lYs")['duration'])
