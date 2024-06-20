@@ -1,35 +1,29 @@
-infrastructure: "local"
-
-S3_SETUP:
-
-
 Collection_Pipeline:
 
     # turn off different parts of pipeline by setting enabled: False
     download:
         enabled: False
-        query_csv: CSV/video_queries.csv # contains queries to use
-        raw_folder: DATA/raw_videos/ # MAKE SURE THERE IS / at the end. If this is relative path, do not include / at the beginning. where videos will be stored after download
-        video_csv: CSV/raw_videos.csv # where downloaded videos will be recorded
-        results_per_query: 10
-        limit_query: 1000 # how may queries you'd like to process, then stop
-        limit_videos: 500 # a hard limit of how many videos to download in one running
+        query_csv: CSV/video_queries.csv # should be a link to a csv file containing queries to use for youtube
+        raw_folder: DATA/raw_videos/ # this is where  videos will be stored after download. FORMATTING: Make sure there is a slash at the end.
+        video_csv: CSV/raw_videos.csv # this is where where downloaded videos will be recorded. FORMATTING: Make sure there is a slash at the end.
+        results_per_query: 10 # how many videos to download per query
+        limit_query: 1000 # how may queries you'd like to process at maximum, before the download phase completes.
+        limit_videos: 500 # a hard limit of how many videos to download in one running of the download phase.
 
-        exclude_english: True
+        exclude_english: True # sometimes, youtube gives language tags. If it says "en," should we exclude that video?
 
     filter:
         enabled: True
         download_clips: True
         clip_folder: DATA/video_clips/
-        # This is where the 
+        # This is where video clips will be stored after filtering a video down to key scenes 
         # This is ALSO where the "analysis" stage will source videos
 
-        clip_csv: CSV/video_clips.csv # where individual clips will be tracked
+        clip_csv: CSV/video_clips.csv # this is a CSV file with one record per clip 
         min_face_size: 100 # minimum size in pixels for a face to be included
-        skip_crop: False # crop the video or not
         min_length: 5 # minimum length of a segment, in seconds
         limit_videos: 500 # limit how many videos we'd like to filter and clip for now
-        voice_detection_smoothing: 0.5 # in seconds, the pause which would cause two different speech segments to be considered the same.
+        voice_detection_smoothing: 0.5 # in seconds, the pause which would cause two different speech segments to be considered part of the same same.
 
     analysis:
     # 3 forms of clip-by-clip analysis can be done: 
@@ -59,7 +53,3 @@ Collection_Pipeline:
 
         plot: True # whether to generate some plots for attribution data. If you just want to plot, turn all the other parts of the pipeline to False
         plot_folder: STATISTICS/plots/ # where to put image plots
-
-    encord_upload: 
-        enabled: False
-        source_folder: CSV/video_clips.csv

@@ -18,7 +18,7 @@ def main(config_path):
     config = load_configuration(config_path)
     pipeline = config['Collection_Pipeline']
 
-    if config['infrastructure'] == 'local':
+    if True:
         
         if pipeline['download']['enabled']:
             Stage_1 = LocalDownloader(query_csv = pipeline['download']['query_csv'],
@@ -41,7 +41,6 @@ def main(config_path):
                             clip_folder = pipeline['filter']['clip_folder'],
                             clip_csv = pipeline['filter']['clip_csv'],
                             min_face_size = int(pipeline['filter']['min_face_size']),
-                            skip_crop = bool(pipeline['filter']["skip_crop"]),
                             min_length = float(pipeline['filter']["min_length"]),
                             limit_videos = int(pipeline['filter']['limit_videos']),
                             voice_detection_smoothing = float(pipeline['filter']['limit_videos']))
