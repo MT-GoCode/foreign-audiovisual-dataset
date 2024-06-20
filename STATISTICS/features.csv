@@ -1,12 +1,101 @@
-CLIP ID,VIDEO ID,START TIME,END TIME,Crop Box,Attributes
-dsKbMxhd9ncZBxN,ybfyLfI5Ml0,30.52,35.64,"(402, 52, 280, 244)","['Blurry', 'Young', 'Female', 'White']"
-dsKbMxhd9ncZBxN,ybfyLfI5Ml0,30.52,35.64,"(402, 52, 280, 244)","['Blurry', 'Young', 'Female', 'White']"
-EQwEZOCn5OdoS7A,ybfyLfI5Ml0,46.56,52.16,"(376, 26, 200, 253)","['Male', 'White']"
-NjQCUxYHrn1G7OR,ybfyLfI5Ml0,82.92,89.24,"(354, 79, 187, 239)","['Mouth_Slightly_Open', 'Smiling', 'Young', 'Female', 'White']"
-uDaFO9ZRWnLvFuI,ybfyLfI5Ml0,108.56,114.4,"(440, 50, 208, 242)","['Young', 'Female', 'White']"
-AIs2KMIurx2d70t,ybfyLfI5Ml0,171.84,187.56,"(453, 31, 286, 254)","['Blurry', 'Young', 'Female', 'White']"
-z8vDGeGtuTp2tYh,ybfyLfI5Ml0,240.84,246.08,"(337, 7, 216, 270)","['Blurry', 'Male']"
-8IwRQgtw3zyvAcb,ybfyLfI5Ml0,277.76,299.08,"(739, 55, 222, 225)","['Male', 'White']"
-Mz0zpCgduFSiECI,ybfyLfI5Ml0,308.04,329.16,"(733, 49, 215, 236)","['Young', 'Male', 'White']"
-Rb6RhtxlEFXPqCv,ybfyLfI5Ml0,383.68,393.92,"(347, 77, 243, 265)","['Blurry', 'Young', 'Male', 'White']"
-YMg9gPBDOLuphZO,ybfyLfI5Ml0,449.48,468.6,"(324, 68, 251, 254)","['Smiling', 'Young', 'Female', 'White']"
+CLIP ID,VIDEO ID,START TIME,END TIME,Crop Box,Attributes,Language
+dsKbMxhd9ncZBxN,ybfyLfI5Ml0,30.52,35.64,"(402, 52, 280, 244)","['Blurry', 'Young', 'Female', 'White']",es
+EQwEZOCn5OdoS7A,ybfyLfI5Ml0,46.56,52.16,"(376, 26, 200, 253)","['Male', 'White']",es
+NjQCUxYHrn1G7OR,ybfyLfI5Ml0,82.92,89.24,"(354, 79, 187, 239)","['Mouth_Slightly_Open', 'Smiling', 'Young', 'Female', 'White']",es
+uDaFO9ZRWnLvFuI,ybfyLfI5Ml0,108.56,114.4,"(440, 50, 208, 242)","['Young', 'Female', 'White']",es
+AIs2KMIurx2d70t,ybfyLfI5Ml0,171.84,187.56,"(453, 31, 286, 254)","['Blurry', 'Young', 'Female', 'White']",es
+z8vDGeGtuTp2tYh,ybfyLfI5Ml0,240.84,246.08,"(337, 7, 216, 270)","['Blurry', 'Male', 'White']",es
+8IwRQgtw3zyvAcb,ybfyLfI5Ml0,277.76,299.08,"(739, 55, 222, 225)","['Young', 'Male', 'White']",es
+Mz0zpCgduFSiECI,ybfyLfI5Ml0,308.04,329.16,"(733, 49, 215, 236)","['Young', 'Male', 'White']",es
+Rb6RhtxlEFXPqCv,ybfyLfI5Ml0,383.68,393.92,"(347, 77, 243, 265)","['Blurry', 'Young', 'Male', 'White']",es
+YMg9gPBDOLuphZO,ybfyLfI5Ml0,449.48,468.6,"(324, 68, 251, 254)","['Smiling', 'Young', 'Female', 'White']",es
+OMLKg1XgbvEG8s4,ybfyLfI5Ml0,493.44,502.04,"(416, 31, 206, 302)","['Young', 'Female', 'White']",es
+hU4En016Um3o57F,ybfyLfI5Ml0,509.8,518.96,"(215, 0, 276, 301)","['Blurry', 'Wearing_Hat', 'Female', 'White']",es
+QfDHDE7rY5uuhyR,ybfyLfI5Ml0,605.68,618.16,"(317, 0, 266, 319)","['Male', 'White']",es
+tKjoLv5XFIy9Gms,Kpw_YVtzZbY,0.12,31.0,"(482, 27, 223, 246)","['Blurry', 'Young', 'Female', 'White']",es
+cli6AU9FciBpNNV,Kpw_YVtzZbY,48.36,58.28,"(222, 41, 363, 279)","['Blurry', 'Wearing_Hat', 'Young', 'Facial_Hair', 'Male', 'White']",es
+vS2JWT4BrXil5F4,Kpw_YVtzZbY,97.72,116.32,"(328, 63, 350, 245)","['Blurry', 'Young', 'Female']",es
+7PNUZm2PZuWDONv,Kpw_YVtzZbY,218.04,238.72,"(196, 27, 353, 269)","['Blurry', 'Young', 'Facial_Hair', 'Male', 'White']",es
+DnvTE5yKGGW6L3r,Kpw_YVtzZbY,291.32,315.2,"(290, 38, 389, 254)","['Blurry', 'Young', 'Female', 'White']",es
+Fmrcd8ebQMmjjWJ,Kpw_YVtzZbY,323.72,330.24,"(320, 23, 271, 267)","['Blurry', 'Young', 'Female']",es
+M7dH0hvzsVAJhH4,Kpw_YVtzZbY,356.96,380.32,"(151, 27, 461, 684)","['Blurry', 'Young', 'Facial_Hair', 'Male', 'White']",es
+eb7XRa4ixWExqlK,Kpw_YVtzZbY,395.32,419.2,"(119, 44, 757, 276)","['Young', 'Female']",es
+PVOMpY10KHZnAFe,Kpw_YVtzZbY,471.2,478.76,"(340, 39, 297, 278)","['Blurry', 'Young', 'Female', 'White']",es
+bRV8FeD1Iniy6wo,bQp-7WrU9ow,17.2,26.6,"(315, 48, 253, 200)","['Blurry', 'Wearing_Hat', 'Young', 'Female', 'White']",es
+HPe9U4HmrfQX9Bx,bQp-7WrU9ow,29.4,38.52,"(507, 64, 430, 439)","['Blurry', 'Young', 'Male']",es
+mNje5XlXPNksogr,bQp-7WrU9ow,64.96,70.84,"(317, 60, 223, 286)","['Young', 'Male']",es
+P5vNhiuIWK79usf,bQp-7WrU9ow,129.64,141.04,"(705, 64, 239, 240)","['Young', 'Male']",es
+Tgtw4yXjwHDbm6g,bQp-7WrU9ow,171.0,187.48,"(267, 36, 200, 228)","['Blurry', 'Wearing_Hat', 'Young', 'Female', 'White']",es
+3t7pUn6HhCyiiEj,bQp-7WrU9ow,246.28,265.6,"(355, 63, 225, 257)","['Wearing_Hat', 'Young', 'Male']",es
+Jy8uIwuu8CN1PO9,bQp-7WrU9ow,299.04,325.28,"(473, 31, 559, 299)","['Blurry', 'Mouth_Slightly_Open', 'Smiling', 'Young', 'Female', 'White']",es
+4HfKFdWuxrUIcV6,bQp-7WrU9ow,359.56,390.16,"(179, 39, 713, 441)","['Young', 'Male']",es
+405N1WsjKDMHmPC,bQp-7WrU9ow,417.88,430.08,"(263, 58, 224, 220)","['Blurry', 'Wearing_Hat', 'Female', 'White']",es
+grqisXp7N3H9DHh,bQp-7WrU9ow,437.08,457.64,"(294, 47, 175, 220)","['Blurry', 'Young', 'Male']",es
+C5PR68Z5lGdBmZf,bQp-7WrU9ow,502.68,516.68,"(199, 49, 201, 197)","['Blurry', 'Young', 'Female', 'White']",es
+CVdNkRpJhy3e428,bQp-7WrU9ow,528.2,540.8,"(272, 43, 274, 498)","['Wearing_Hat', 'Young', 'Male']",es
+RMN0kXBb1bQzmRD,bQp-7WrU9ow,553.56,572.08,"(718, 50, 233, 259)","['Blurry', 'Mouth_Slightly_Open', 'Smiling', 'Young', 'Male']",es
+Bc3YfEJbtyTqaEa,cxl-necIvrA,0.08,25.88,"(491, 66, 195, 271)","['Blurry', 'Mouth_Slightly_Open', 'Wearing_Hat', 'Young', 'Female', 'White']",fr
+zKc5yPOPOyvMpNc,cxl-necIvrA,74.52,97.0,"(577, 79, 169, 217)","['Blurry', 'Mouth_Slightly_Open', 'Male']",fr
+iSkd6Elj0orpoFz,6-9HynSOLdc,14.6,20.04,"(378, 156, 332, 321)","['Blurry', 'Mouth_Slightly_Open', 'Young', 'Male']",
+QQvL7NAwxTpWtq0,6-9HynSOLdc,22.52,29.52,"(503, 112, 307, 389)","['Blurry', 'Mouth_Slightly_Open', 'Young', 'Male']",
+dHvBffglrptOWJm,6-9HynSOLdc,59.6,64.64,"(514, 98, 256, 342)","['Blurry', 'Young', 'Male']",
+iUIaS4WN0lFECCb,6-9HynSOLdc,126.52,136.0,"(416, 145, 240, 282)","['Blurry', 'Male', 'White']",
+5uGhg0E826ctBPz,6-9HynSOLdc,149.24,155.6,"(389, 130, 214, 259)","['Blurry', 'Male', 'White']",
+c30gcS6i6gB8hEM,6-9HynSOLdc,167.12,176.64,"(520, 113, 240, 295)","['Young', 'Male', 'White']",
+6ZfnECsJHSGGiyW,6-9HynSOLdc,299.92,306.32,"(347, 127, 454, 510)","['Wearing_Hat', 'Young', 'Male']",
+sDSS8qrXruVjQHN,6-9HynSOLdc,384.8,390.2,"(452, 114, 310, 307)","['Blurry', 'Young', 'Male']",
+24Zbg6xUiLJdGAR,6-9HynSOLdc,402.92,410.96,"(361, 132, 475, 528)","['Blurry', 'Young', 'Male', 'White']",
+t6AbIbtZinxTJmm,OgCsbjyKCRQ,1320.52,1327.16,"(467, 52, 305, 438)","['Blurry', 'Young', 'Male', 'White']",
+U3iyDHw8IfYbuvQ,OgCsbjyKCRQ,1530.36,1549.2,"(499, 81, 251, 296)","['Blurry', 'Young', 'Male', 'White']",
+QTwdQGj9huUBisl,OgCsbjyKCRQ,2023.52,2054.08,"(500, 64, 260, 328)","['Blurry', 'Young', 'Male', 'White']",
+mzdC8XDWgtzatc3,OgCsbjyKCRQ,3465.2,3481.88,"(507, 77, 269, 341)","['Young', 'Female', 'White']",
+Y01Oc8DD81SVqdw,unmu4yKfBg0,0.08,16.28,"(496, 47, 712, 281)","['Young', 'Female', 'White']",fr
+Ou7vNe0ke0nLHI7,unmu4yKfBg0,49.36,62.92,"(40, 0, 711, 321)","['Wearing_Hat', 'Young', 'Male']",fr
+Yxf4SKPvkDmlKhW,unmu4yKfBg0,119.24,136.76,"(175, 55, 913, 361)","['Young', 'Female', 'White']",fr
+vYnRmzj49rtHbYw,unmu4yKfBg0,151.28,163.76,"(468, 73, 432, 385)","['Wearing_Hat', 'Facial_Hair', 'Female', 'White']",fr
+9xez8AmRagZvCDa,unmu4yKfBg0,438.36,465.08,"(553, 50, 172, 186)","['Blurry', 'Young', 'Female', 'White']",fr
+H3uzxecnxQEhRYJ,6_5FnCLLYoA,1.4347666666666667,447.4136333333333,"(0, 137, 793, 550)","['Blurry', 'Young', 'Female']",en
+AOvCWhjHRMYUQTH,2SIdIAMzHH0,0.1334666666666666,13.013,"(539, 64, 432, 425)","['Blurry', 'Wearing_Hat', 'Young', 'Facial_Hair', 'Male']",es
+uxycRjrG2ECFVGD,t7-nb1wlnyA,27.861166666666666,47.98126666666667,"(237, 29, 176, 213)","['Mouth_Slightly_Open', 'Smiling', 'Young', 'Female']",en
+YeBWonXOGPxZAhv,t7-nb1wlnyA,90.35693333333332,116.18273333333332,"(396, 20, 134, 160)","['Young', 'Female']",en
+ILsgXMOAwkHepVv,t7-nb1wlnyA,219.5193,252.2186333333333,"(222, 18, 196, 240)","['Mouth_Slightly_Open', 'Smiling', 'Young', 'Female']",en
+0dbMoAxFpjexiEp,t7-nb1wlnyA,301.5012,327.9943333333333,"(401, 31, 102, 135)","['Blurry', 'Young', 'Female']",en
+pEArIFyfn32ogg5,t7-nb1wlnyA,426.1257,439.6725666666667,"(388, 26, 116, 149)","['Young', 'Female']",en
+L7KfA0pN4R2Nutu,t7-nb1wlnyA,484.01686666666666,516.2490666666666,"(243, 23, 263, 215)","['Young', 'Female']",en
+6LERoB5QwK8jsii,QIrv10RWVYc,32.36,41.04,"(413, 4, 132, 195)","['Blurry', 'Mouth_Slightly_Open', 'Smiling', 'Young', 'Female', 'White']",fr
+P3NAyjFUnVi61iy,QIrv10RWVYc,140.24,157.6,"(321, 26, 211, 149)","['Blurry', 'Young', 'Male', 'White']",fr
+Q0nS4oTCR2adpo4,QIrv10RWVYc,193.92,206.76,"(402, 38, 119, 139)","['Blurry', 'Young', 'Male', 'White']",fr
+hgy4Rb68AJTlLj1,QIrv10RWVYc,230.28,261.36,"(388, 44, 126, 153)","['Blurry', 'Mouth_Slightly_Open', 'Smiling', 'Young', 'Female', 'White']",fr
+MqOQpDOCixZfoCj,QIrv10RWVYc,444.6,464.32,"(179, 0, 362, 221)","['Blurry', 'Young', 'Female']",fr
+rVeP3fT4h1s6wZD,7OU9_C1JnFs,0.0417083333333333,11.970291666666666,"(529, 150, 175, 211)","['Mouth_Slightly_Open', 'Smiling', 'Wearing_Hat', 'Young', 'Female']",es
+OOTmwjiH4TYd0XW,7OU9_C1JnFs,14.639625,43.75204166666666,"(543, 147, 190, 236)","['Wearing_Hat', 'Young', 'Female']",es
+K4QDE9gwxuw2aqc,7OU9_C1JnFs,89.83975,131.256125,"(468, 117, 270, 286)","['Mouth_Slightly_Open', 'Smiling', 'Wearing_Hat', 'Young', 'Female']",es
+NuV4XNMqwCcPQ3K,7OU9_C1JnFs,137.92945833333332,195.6120833333333,"(527, 148, 229, 263)","['Mouth_Slightly_Open', 'Smiling', 'Wearing_Hat', 'Young', 'Female']",es
+5cCFR9ZZU0RVGc4,GE0fwx6boLw,273.76,289.12,"(448, 124, 537, 258)","['Wearing_Hat', 'Facial_Hair', 'Male', 'White']",fr
+TNOIFxklbX4l88K,dAEteuFTnMk,35.36,54.24,"(612, 18, 637, 531)","['Blurry', 'Young', 'Female']",fr
+fmOkKry3WQVxEw3,dAEteuFTnMk,68.24,73.92,"(843, 88, 192, 213)","['Blurry', 'Young', 'Male', 'Black']",fr
+XXi6i7vtGMxCSpp,dAEteuFTnMk,183.84,221.0,"(852, 44, 217, 217)","['Blurry', 'Young', 'Female', 'White']",fr
+QANqzwuQEdSO0w3,dAEteuFTnMk,240.96,254.28,"(46, 198, 761, 269)","['Blurry', 'Facial_Hair', 'Male', 'White']",fr
+jLnJuqGXRHUQstO,dAEteuFTnMk,261.44,277.36,"(780, 39, 181, 225)","['Blurry', 'Wearing_Hat', 'Young', 'Female']",fr
+ldaz0RTLSDL3KnW,dAEteuFTnMk,342.36,379.6,"(773, 53, 222, 236)","['Blurry', 'Smiling', 'Young', 'Male']",fr
+8VontDpjQEVTdNo,mjOT9gFjsUU,347.53333333333336,360.56666666666666,"(982, 100, 282, 284)","['Young', 'Facial_Hair', 'Male', 'White']",fr
+WquvvuIt8lmH4TK,AFTEydbX2vo,31.6316,45.67896666666667,"(143, 41, 773, 417)","['Blurry', 'Young', 'Facial_Hair', 'Male', 'Asian']",
+M1oLRSbfANkFRMu,AFTEydbX2vo,361.5278333333333,375.80876666666666,"(760, 136, 354, 269)","['Blurry', 'Young', 'Male', 'Asian']",
+HHX0lCpghXL3kgs,cFo1CJ6hzrU,66.06599999999999,82.74933333333333,"(198, 295, 111, 139)",[],
+SDEdg5IMzBVIvOJ,cFo1CJ6hzrU,197.36383333333333,206.3728333333333,"(627, 105, 96, 115)","['Blurry', 'Male', 'Asian']",
+u2h7bfQYay7X8yj,cFo1CJ6hzrU,449.0319166666666,498.9985,"(539, 121, 155, 167)","['Blurry', 'Young', 'Male', 'Asian']",
+Ptoe54BI6UR97vL,Bs4wejREPi0,137.84604166666665,154.77962499999998,"(64, 34, 132, 164)","['Blurry', 'Young', 'Facial_Hair', 'Female', 'Asian']",hi
+7YlmICDlFvcUiyA,Bs4wejREPi0,231.94004166666664,244.66108333333327,"(241, 45, 163, 167)","['Blurry', 'Young', 'Facial_Hair', 'Male']",hi
+v9bI9BcXkdhVgjm,Qpbsn_QCX20,150.4,156.24,"(1002, 143, 79, 107)","['Blurry', 'Young', 'Female']",hi
+nOqDYk9i9m87gkV,Qpbsn_QCX20,332.48,338.88,"(1012, 141, 80, 111)","['Blurry', 'Young', 'Female']",hi
+B27Krj47M7YPjM4,Qpbsn_QCX20,339.52,346.16,"(1015, 146, 79, 107)","['Blurry', 'Young', 'Female']",hi
+wXujSF5LiO654Wv,Qpbsn_QCX20,371.52,378.16,"(1018, 138, 95, 121)","['Blurry', 'Young', 'Female']",hi
+oIz0koOD09u34RH,Qpbsn_QCX20,378.8,387.16,"(627, 144, 469, 283)","['Blurry', 'Young', 'Female']",hi
+zKqqpyqjp2Repsm,Qpbsn_QCX20,394.2,401.92,"(246, 150, 95, 68)","['Blurry', 'Young', 'Female']",hi
+EheHwWDUm1EFyKV,gzsGZROZsnQ,102.53333333333332,114.26666666666668,"(293, 150, 243, 284)","['Blurry', 'Mouth_Slightly_Open', 'Male']",hi
+NmXYId610YJkoOK,gzsGZROZsnQ,176.7,182.0,"(240, 109, 279, 272)","['Young', 'Male']",hi
+Z6ErnzOliBF3IVP,gzsGZROZsnQ,424.6333333333333,446.23333333333335,"(889, 105, 36, 44)","['Blurry', 'Male', 'Hispanic']",hi
+Ns93j2rEwrLR57O,gzsGZROZsnQ,446.73333333333335,534.0,"(120, 98, 981, 365)","['Mouth_Slightly_Open', 'Young', 'Male']",hi
+pgde5N0ch76b53b,gzsGZROZsnQ,534.5,561.7,"(178, 117, 256, 262)","['Mouth_Slightly_Open', 'Smiling', 'Male']",hi
+WonH9FHmh2IlxIW,R8ovGw7njbA,23.76,31.64,"(506, 147, 243, 317)","['Blurry', 'Young', 'Male']",hi
+CEzu0XqBsQssouX,R8ovGw7njbA,148.84,155.84,"(545, 107, 252, 240)","['Blurry', 'Young', 'Male']",hi

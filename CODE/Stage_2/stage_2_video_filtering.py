@@ -29,6 +29,9 @@ class LocalFilter:
         print("videos to process: ")
         print(vid_ids_to_process)
 
+        from concurrent.futures import ThreadPoolExecutor, as_completed
+
+
         for VIDEO_ID in vid_ids_to_process:
             try:
                 video_path = self.raw_folder + VIDEO_ID + ".mp4"
@@ -38,18 +41,30 @@ class LocalFilter:
                 shots = test.detect_shots()
 
                 # DETECT SHOTS THAT HAVE ONE VISIBLE FACE ONLY
-                functional_shots = []
-                for i, shot in enumerate(shots):
+                def process_shot(index_shot):
+                    i, shot = index_shot
                     print("shot " + str(i+1) + "/" + str(len(shots)) + str(shot))
-                    
                     if single_face_and_size_checker(shot, test, 3, self.min_face_size):
-                        functional_shots.append(shot)
+                        return shot
+                    return None
+
+                functional_shots = []
+
+                with ThreadPoolExecutor(max_workers=10) as executor:
+                    futures = {executor.submit(process_shot, (i, shot)): i for i, shot in enumerate(shots)}
+
+                    for future in as_completed(futures):
+                        result = future.result()
+                        if result is not None:
+                            functional_shots.append(result)
                         
                 
                 print("DETECTED TO HAVE ONE FACE: ")
                 print(functional_shots)
 
-                if len(functional_shots) == 0: continue
+                if len(functional_shots) == 0: 
+                    self.mark_video_processed(VIDEO_ID)
+                    continue
 
                 wav = Audio_Custom.extract_audio(video_path)
 
@@ -61,7 +76,9 @@ class LocalFilter:
                 smoothed_segments = smooth_voice_segments(timestamps, self.voice_detection_smoothing)
                 print(smoothed_segments)
 
-                if len(smoothed_segments) == 0: continue
+                if len(smoothed_segments) == 0:
+                    self.mark_video_processed(VIDEO_ID)
+                    continue
 
                 video = VideoFileClip(video_path)
 
@@ -69,9 +86,9 @@ class LocalFilter:
 
                 # IDENTIFY SHOTS WITH PEOPLE SPEAKING, based on pyscenedetect + VAD
 
-                good_speaking_shots = []
 
-                for i, shot in enumerate(VAD_frames):
+                def process_shot(index_shot):
+                    i, shot = index_shot
                     print("shot " + str(i+1) + "/" + str(len(VAD_frames)))
                     print("boundaries: ")
                     print(shot)
@@ -80,11 +97,24 @@ class LocalFilter:
                     try:
                         if analyze_speaking(test, shot[0], shot[1], upper_lip_idx, lower_lip_idx, frame_step=5):
                             print("found!")
-                            good_speaking_shots.append(shot);
+                            return shot
                     except Exception as e:
                         print("SYSTEM: error while analyzing mouth movements.")
                         print(e)
-                        continue;
+                        return None
+
+                good_speaking_shots = []
+
+                # Determine the number of workers
+
+                with ThreadPoolExecutor(max_workers=10) as executor:
+                    futures = {executor.submit(process_shot, (i, shot)): i for i, shot in enumerate(VAD_frames)}
+
+                    for future in as_completed(futures):
+                        result = future.result()
+                        if result is not None:
+                            good_speaking_shots.append(result)
+
                 print("DETECTED TO HAVE SOMEONE SPEAKING")
                 print(good_speaking_shots)
 

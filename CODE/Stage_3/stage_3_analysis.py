@@ -8,9 +8,10 @@ class LocalAnalyzer:
 
         self.feature_csv_pd = pd.read_csv(self.feature_csv)
         self.clip_csv_pd = pd.read_csv(self.clip_csv)
+        self.video_csv_pd = pd.read_csv(self.video_csv)
 
     def fetch_remaining_clips(self):
-        X = self.clip_csv_pd[self.clip_csv_pd['PROCESSED?'] != 1]['CLIP ID'].tolist()
+        X = self.clip_csv_pd[self.clip_csv_pd['PROCESSED?'] != 1]['CLIP ID'].tolist() # .tolist()
         return X[:min(len(X), self.limit_videos)]
     
     def analyze_clip(self, video_path):
@@ -34,39 +35,50 @@ class LocalAnalyzer:
     def execute(self):
         
         clips_to_process = self.fetch_remaining_clips()
+        print(clips_to_process)
         
         for name in clips_to_process:
-            DATA = self.analyze_clip(self.clip_folder + name + ".mp4")
+            
+            try:
+                DATA = self.analyze_clip(self.clip_folder + name + ".mp4")
 
-            crop_data = ""
-            attribute_data = ""
+                crop_data = ""
+                attribute_data = ""
 
-            if self.crop: crop_data = DATA['crop_box']
-            if self.attribute: attribute_data = DATA['text_attributes']
+                if self.crop: crop_data = DATA['crop_box']
+                if self.attribute: attribute_data = DATA['text_attributes']
 
-            columns_to_extract = ['CLIP ID', 'VIDEO ID', 'START TIME', 'END TIME']  # Modify as needed
+                columns_to_extract = ['CLIP ID', 'VIDEO ID', 'START TIME', 'END TIME']  # Modify as needed
 
-            row = self.clip_csv_pd.loc[self.clip_csv_pd['CLIP ID'] == name, columns_to_extract]
-            old_record = row.values.tolist()[0]
+                row = self.clip_csv_pd.loc[self.clip_csv_pd['CLIP ID'] == name, columns_to_extract]
+                old_record = row.values.tolist()[0]
 
-            record = pd.Series(old_record + [crop_data, attribute_data],
-                index = ['CLIP ID','VIDEO ID','START TIME','END TIME', 'Crop Box', 'Attributes'])
+                language_value = self.video_csv_pd.loc[self.video_csv_pd['VIDEO ID'] == row['VIDEO ID'].values[0], 'Language'].iloc[0]
+                
 
-            self.feature_csv_pd.loc[len(self.feature_csv_pd)] = record  # adding a row
+                record = pd.Series(old_record + [crop_data, attribute_data] + [language_value],
+                    index = ['CLIP ID','VIDEO ID','START TIME','END TIME', 'Crop Box', 'Attributes', 'Language'])
+                print("adding row: ")
+                print(record)
+                
+                self.feature_csv_pd.loc[len(self.feature_csv_pd)] = record  # adding a row
 
-            # self.video_csv is the PATH
-            self.feature_csv_pd.to_csv(self.feature_csv, index=False)
+                # self.video_csv is the PATH
+                self.feature_csv_pd.to_csv(self.feature_csv, index=False)
 
-            if self.pose_estimation:
-                DATA['pose_estimation'].to_csv(self.pose_folder + name + ".csv")
+                if self.pose_estimation:
+                    DATA['pose_estimation'].to_csv(self.pose_folder + name + ".csv")
 
 
-            # MARK CLIP PROCESSED
-            self.clip_csv_pd.loc[self.clip_csv_pd['CLIP ID'] == name, 'PROCESSED?'] = 1
+                # MARK CLIP PROCESSED
+                self.clip_csv_pd.loc[self.clip_csv_pd['CLIP ID'] == name, 'PROCESSED?'] = 1
 
-            # self.query_csv is the PATH
-            self.clip_csv_pd.to_csv(self.clip_csv, index=False) 
-
+                # self.query_csv is the PATH
+                self.clip_csv_pd.to_csv(self.clip_csv, index=False) 
+            except Exception as e:
+                print("SYSTEM: Ruh Roh. Problem analyzing this clip: ")
+                print(e)
+                continue;
 
     
 

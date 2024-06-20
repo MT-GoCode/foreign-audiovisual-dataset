@@ -7,7 +7,7 @@ Collection_Pipeline:
 
     # turn off different parts of pipeline by setting enabled: False
     download:
-        enabled: True
+        enabled: False
         query_csv: CSV/video_queries.csv # contains queries to use
         raw_folder: DATA/raw_videos/ # MAKE SURE THERE IS / at the end. If this is relative path, do not include / at the beginning. where videos will be stored after download
         video_csv: CSV/raw_videos.csv # where downloaded videos will be recorded
@@ -39,7 +39,7 @@ Collection_Pipeline:
         # Depending on what is set to true, the code will run just that part of analysis.
         enabled: False
 
-        limit_videos: 1 # how many clips to analyze at a time
+        limit_videos: 1000 # how many clips to analyze at a time
 
         feature_csv: STATISTICS/features.csv
         # where to save attribute and "area of interest/crop" features.
@@ -57,11 +57,9 @@ Collection_Pipeline:
     post_processing:
         enabled: False
 
-        language_annotation: False # annotate raw_videos csv with language where missing using SpeechBrain
-
         plot: True # whether to generate some plots for attribution data. If you just want to plot, turn all the other parts of the pipeline to False
         plot_folder: STATISTICS/plots/ # where to put image plots
 
     encord_upload: 
-        enabled: True
+        enabled: False
         source_folder: CSV/video_clips.csv

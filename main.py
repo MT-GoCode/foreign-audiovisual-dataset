@@ -56,6 +56,8 @@ def main(config_path):
                     clip_folder = pipeline['filter']['clip_folder'],
                     clip_csv = pipeline['filter']['clip_csv'],
 
+                    video_csv = pipeline['download']['video_csv'], # just to get language
+
 
                     limit_videos = pipeline['analysis']['limit_videos'],
                     feature_csv = pipeline['analysis']['feature_csv'],

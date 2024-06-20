@@ -12,7 +12,7 @@ from insightface.app import FaceAnalysis
 from insightface.data import get_image as ins_get_image
 
 
-def detect_faces_retinaface(np_image: np.ndarray, plot: bool = False):
+def detect_faces_retinaface(retina_face_object, np_image: np.ndarray, plot: bool = False):
     """
     Detect faces in a NumPy image array using RetinaFace directly on numpy arrays,
     optionally plot the results, and return bounding boxes.
@@ -22,8 +22,10 @@ def detect_faces_retinaface(np_image: np.ndarray, plot: bool = False):
     :return: List of bounding boxes for each detected face, each box is a tuple (x, y, width, height).
     """
     # Initialize the RetinaFace detector
-    app = FaceAnalysis(providers=['CUDAExecutionProvider'], allowed_modules=['detection', 'recognition'])
-    app.prepare(ctx_id=0, det_size=(640, 640))
+    app = retina_face_object; 
+    # app = FaceAnalysis(providers=['CUDAExecutionProvider'], allowed_modules=['detection', 'recognition'])
+    # app.prepare(ctx_id=0, det_size=(640, 640))
+
 
     # Detect faces
     faces = app.get(np_image)
@@ -63,9 +65,15 @@ def single_face_and_size_checker(frame_range: tuple, custom_object, num_samples:
     max_samples = min(num_samples, end_frame - start_frame + 1)
     sample_frames = random.sample(range(start_frame, end_frame + 1), max_samples)
 
+    # RETINAFACE ONLY
+    app = FaceAnalysis(providers=['CUDAExecutionProvider'], allowed_modules=['detection', 'recognition'])
+    app.prepare(ctx_id=0, det_size=(640, 640))
     for frame_num in sample_frames:
         np_image = custom_object.get_frame(frame_num)
-        bboxes = detect_faces_retinaface(np_image)
+
+        
+
+        bboxes = detect_faces_retinaface(app, np_image)
 
         # Check if exactly one face is detected and its size is larger than the specified min_size
         if len(bboxes) != 1 or (bboxes[0][2] < min_size and bboxes[0][3] < min_size):
